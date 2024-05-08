@@ -19,11 +19,11 @@ $ npm run start:dev
 ```
 ## User Connect
 ```zsh
-$ localhost:3000/index
+localhost:3000/index
 ```
 ## Admin Connect
 ```zsh
-$  localhost:3000/admin/index
+localhost:3000/admin/index
 ```
 
 ## Development Story :question:
