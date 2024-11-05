@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>업로드 완료</title>
+  <style>
+    .image-container {
+      position: relative;
+      display: inline-block;
+    }
+    .delete-button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #ff0000;
+      color: #ffffff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>업로드 완료</h1>
+  <p>파일 "<%= filename %>"이(가) 성공적으로 업로드되었습니다.</p>
+  <div class="image-container">
+    <img src="/uploads/<%= filename %>" alt="Uploaded Image" />
+    <button class="delete-button" onclick="deleteImage('<%= filename %>')">삭제</button>
+  </div>
+  <script>
+    function deleteImage(filename) {
+      fetch('/upload/deleteFile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ filename })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('이미지가 삭제되었습니다.');
+          window.location.href = '/';
+        } else {
+          alert('이미지 삭제에 실패했습니다.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+</body>
+</html>

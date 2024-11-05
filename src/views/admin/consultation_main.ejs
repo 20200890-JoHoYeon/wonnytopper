@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="author" content="mars-sequel" />
+
+  <title>워니토퍼 관리자 - 상담문의 관리</title>
+
+  <!-- Custom fonts for this template -->
+  <link href="/admin/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+
+  <!-- Styles for this page -->
+  <link href="/admin/assets/css/sb-admin-2.min.css" rel="stylesheet" />
+  <link href="/admin/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/admin/assets/css/style.css" />
+</head>
+
+<body id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <%- include('common/sidebar') %>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <%- include('common/topbar') %>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+              <!-- Page Heading -->
+              <div class="border-bottom-primary mb-4">
+                <div class="main-title">
+                  <h1 class="mb-2 text-gray-800">상담문의 관리</h1>
+                </div>
+                <h6 class="page-adress">게시판 관리 > 상담문의 관리</h6>
+              </div>
+
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                    검색 필터
+                  </h6>
+
+                  <!-- 검색패널 -->
+                  <section class="panel mb-xs">
+                    <table class="filter-table">
+                      <tr>
+                        <td class="filter-label">
+                          등록일
+                        </td>
+                        <td>
+                          <div class="col-md-7 input-daterange input-group date-pick">
+                            <input type="text" class="form-control daterange" id="from_date" name="start"
+                              autocomplete="off" />
+                            <span class="input-group-addon">
+                              <i class="fa fa-calendar calender-icon"></i>
+                            </span>
+                            <span class="input-group-addon tx-icon">
+                              ~
+                            </span>
+                            <input type="text" class="form-control daterange" id="to_date" name="end"
+                              autocomplete="off" />
+                            <span class="input-group-addon">
+                              <i class="fa fa-calendar calender-icon"></i>
+                            </span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="filter-label">
+                          의뢰목적
+                        </td>
+                        <td class="col-sm-9">
+                          <div class="filter-purpose">
+                            <label class="ckbox-inline">
+                              <input type="checkbox" id="check_all" checked />
+                              전체
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="checkbox" checked class="ck purpose" value="1" />
+                              풍선 장식
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="checkbox" checked class="ck purpose" value="7" />
+                              레터링 풍선
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="checkbox" checked class="ck purpose" value="8" />
+                              인쇄 풍선
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="checkbox" checked class="ck purpose" value="2" />
+                              메세지 토퍼
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="checkbox" checked class="ck purpose" value="3" />
+                              부스체험(토퍼, 풍선)
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="checkbox" checked class="ck purpose" value="4" />
+                              삐에로
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="checkbox" checked class="ck purpose" value="5" />
+                              페이스페인팅
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="checkbox" checked class="ck purpose" value="6" />
+                              클래스
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="filter-label">
+                          답변여부
+                        </td>
+                        <td>
+                          <div class="col-sm-4">
+                            <label class="ckbox-inline">
+                              <input type="radio" name="answer_yn" value="all" checked> 전체
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="radio" name="answer_yn" value="Y">
+                              Y
+                            </label>
+                            <label class="ckbox-inline">
+                              <input type="radio" name="answer_yn" value="N">
+                              N
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="filter-label">
+                          검색어
+                        </td>
+                        <td>
+                          <div class="col-sm-8 search-input">
+                            <input type="text" id="keyword" class="form-control" />
+                        </td>
+                      </tr>
+                    </table>
+                  </section>
+                  <!-- 검색패널 end -->
+
+                  <div class="btn-area float-right">
+                    <a href="#" class="btn btn btn-block" id="search_btn">
+                      검색
+                    </a>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <div class="admin-btn-tool tx-align-left">
+                      <div class="tool-select ib">
+                        <select id="order_select" class="form-control" name="order_select">
+                          <option value="DESC">등록일 ↓</option>
+                          <option value="ASC">등록일 ↑</option>
+                        </select>
+                      </div>
+                    </div>
+                    <table class="table table-bordered content-table" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>
+                            NO
+                          </th>
+                          <th>이름</th>
+                          <th>휴대폰번호</th>
+                          <th>의뢰목적</th>
+                          <th>상담내용</th>
+                          <th>답변여부</th>
+                          <th>답변 등록일</th>
+                          <th>등록일</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                    <div class="row">
+                      <div class="col-sm-12 col-md-5">
+                        <div id="list_info"></div>
+                      </div>
+                    </div>
+                    <div id="pagination_container">
+                      <ul class="pagination">
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <%- include('common/footer') %>
+          <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- 상담 상세 모달-->
+  <div class="modal fade consult-modal-dialog" id="consultDetailModal" data-backdrop="static" tabindex="-1"
+    role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">답변 상세보기</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="detail table table-bordered">
+            <tr>
+              <td width="20%" class="table-title-td">이름</td>
+              <td width="30%" id="counsel-name">
+                홍길동
+              </td>
+              <td width="20%" class="table-title-td">등록일</td>
+              <td width="30%" id="counsel-reg-date">
+              </td>
+            </tr>
+            <tr>
+              <td width="20%" class="table-title-td">휴대폰번호</td>
+              <td width="30%" id="counsel-phone">
+
+              </td>
+              <td width="20%" class="table-title-td">이메일</td>
+              <td width="30%" id="counsel-email">
+
+              </td>
+            </tr>
+
+            <tr>
+              <td width="20%" class="table-title-td">장소</td>
+              <td width="30%" id="counsel-location">
+
+              </td>
+              <td width="20%" class="table-title-td">예산</td>
+              </td>
+              <td width="30%" id="counsel-budget">
+              </td>
+            </tr>
+
+            <tr>
+              <td width="20%" class="table-title-td">의뢰목적</td>
+              <td width="80%" id="counsel-purpose" colspan="3">
+              </td>
+            </tr>
+            <tr>
+              <td width="20%" class="table-title-td">관련컨텐츠</td>
+              <td id="counsel-relate-img-td" class="align-c reqanswer-img-td">
+                <img src="/user/assets/images/banner.jpg" class="counsel-relate-img" id="counsel-relate-img">
+              </td>
+              <td colspan="2" id="counsel-relate-content-td">
+                <div id="counsel-relate-content" class="counsel-relate-content"></div>
+              </td>
+              <td id="counsel-nodata" colspan="3">-</td>
+            <tr style="vertical-align: middle;">
+              <td width="20%" class="table-title-td">상담내용</td>
+              <td width="80%" colspan="3">
+                <div class="tx-area" id="counsel-counsel">
+                </div>
+              </td>
+            </tr>
+
+          </table>
+          <hr />
+          <table class="detail table table-bordered">
+            <div class="pb-1 float-right"><span class="star">*</span>는 필수 입력값</div>
+            <tr>
+              <td width="20%" class="table-title-td">답변
+              </td>
+              <td width="80%" colspan="2">
+                <div class="tx-area" id="counsel-answer">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="20%" class="table-title-td">첨부파일
+              </td>
+              <td width="80%" colspan="2" id="counsel-file">
+
+              </td>
+            </tr>
+            <tr>
+              <td width="20%" class="table-title-td">답변 등록일
+              </td>
+              <td width="80%" colspan="2" id="counsel-answer-reg-date">
+
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="detail-modal-footer">
+          <a class="btn btn-primary btn-100" data-dismiss="modal">확인</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 상담 상세 모달 end  -->
+  <!-- 답변 등록 모달 -->
+  <div class="modal fade consult-modal-dialog" id="consultModal" tabindex="-1" role="dialog" data-backdrop="static"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">답변 작성하기</h5>
+          <button class="close consult" type="button" data-dismiss="modal">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/admin/source" method="post" enctype="multipart/form-data">
+            <table class="table table-bordered">
+              <tr>
+                <td width="20%" class="table-title-td">이름</td>
+                <td width="30%" id="reqanswer-name">
+                  홍길동
+                </td>
+                <td width="20%" class="table-title-td">등록일</td>
+                <td width="30%" id="reqanswer-reg-date">
+                </td>
+              </tr>
+              <tr>
+                <td width="20%" class="table-title-td">휴대폰번호</td>
+                <td width="30%" id="reqanswer-phone">
+                </td>
+                <td width="20%" class="table-title-td">이메일</td>
+                <td width="30%" id="reqanswer-email">
+                </td>
+              </tr>
+              <tr>
+                <td width="20%" class="table-title-td">장소</td>
+                <td width="30%" id="reqanswer-location">
+                </td>
+                <td width="20%" class="table-title-td">예산</td>
+                </td>
+                <td width="30%" id="reqanswer-budget">
+                </td>
+              </tr>
+
+              <tr>
+                <td width="20%" class="table-title-td">의뢰목적</td>
+                <td width="80%" colspan="3" id="reqanswer-purpose">
+                </td>
+              </tr>
+              <tr>
+                <td width="20%" class="table-title-td">관련컨텐츠</td>
+                <td id="reqanswer-relate-img-td" class="align-c relate-img td">
+                  <img src="/user/assets/images/banner.jpg" class="counsel-relate-img" id="reqanswer-relate-img">
+                </td>
+                <td colspan="2" id="reqanswer-relate-content-td">
+                  <div id="reqanswer-relate-content" class="reqanswer-relate-content"></div>
+                </td>
+                <td id="reqanswer-nodata" colspan="3">-</td>
+              </tr>
+              <tr>
+                <td width="20%" class="table-title-td">상담내용</td>
+                <td width="80%" colspan="3">
+                  <div class="tx-area" id="reqanswer-counsel">
+                  </div>
+                </td>
+              </tr>
+
+            </table>
+            <hr />
+            <table class="table table-bordered">
+              <div class="pb-1 float-right"><span class="star">*</span>는 필수 입력값</div>
+              <tr>
+                <td width="20%" class="table-title-td">답변
+                  <span class="star">*</span>
+                </td>
+                <td width="80%" colspan="2">
+                  <textarea class="form-control answer-text-area" id="reqanswer-answer"></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td width="20%" class="table-title-td">첨부파일
+                </td>
+                <td width="80%" colspan="2">
+                  <label for="file1" class="file-input-label">파일 선택</label>
+                  <input type="file" accept=".jpg, .png" id="file1" class="file-input" name="productImgArr[]"
+                    required />
+                  <span id="fileName" class="file-name"></span>
+                  <a class="cancel-btn" style="display: none;">X</a>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <div class="answer detail-modal-footer">
+
+          <a class="btn btn-primary btn-100" id="answer_btn">확인</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 답변 등록 모달  end -->
+  <!-- 답변 등록 확인 모달 -->
+  <div class="modal fade consult-modal-dialog" id="consultConfirmModal" tabindex="-1" role="dialog"
+    data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">답변 상세보기</h5>
+          <button class="close confirm" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="detail table table-bordered">
+            <tr>
+              <td width="20%" class="table-title-td">이름</td>
+              <td width="30%" id="confirm-answer-name">
+              </td>
+              <td width="20%" class="table-title-td">등록일</td>
+              <td width="30%" id="confirm-answer-reg-date">
+            </tr>
+            <tr>
+              <td width="20%" class="table-title-td">휴대폰번호</td>
+              <td width="30%" id="confirm-answer-phone">
+              </td>
+              <td width="20%" class="table-title-td">이메일</td>
+              <td width="30%" id="confirm-answer-email">
+              </td>
+            </tr>
+            <tr>
+              <td width="20%" class="table-title-td">장소</td>
+              <td width="30%" id="confirm-answer-location">
+              </td>
+              <td width="20%" class="table-title-td">예산</td>
+              </td>
+              <td width="30%" id="confirm-answer-budget">
+              </td>
+            </tr>
+            <tr>
+              <td width="20%" class="table-title-td">의뢰목적</td>
+              <td width="30%" colspan="3" id="confirm-answer-purpose">
+              </td>
+            </tr>
+            <tr>
+              <td width="20%" class="table-title-td">관련컨텐츠</td>
+              <td id="confirm-answer-relate-img-td" class="align-c ">
+                <img src="/user/assets/images/banner.jpg" id="confirm-answer-relate-img" class="counsel-relate-img">
+              </td>
+              <td colspan="2" id="confirm-answer-relate-content-td">
+                <div id="confirm-answer-relate-content" class="confirm-answer-relate-content"></div>
+              </td>
+              <td id="confirm-answer-nodata" colspan="3">-</td>
+            </tr>
+            <tr style="vertical-align: middle;">
+              <td width="20%" class="table-title-td">상담내용</td>
+              <td width="80%" colspan="3">
+                <div class="tx-area" id="confirm-answer-counsel">
+                </div>
+              </td>
+            </tr>
+
+          </table>
+          <hr />
+          <table class="detail table table-bordered">
+            <div class="pb-1 float-right"><span class="star">*</span>는 필수 입력값</div>
+            <tr>
+              <td width="20%" class="table-title-td">답변
+              </td>
+              <td width="80%" colspan="2">
+                <div class="tx-area" id="confirm-answer-answer">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="20%" class="table-title-td">첨부파일
+              </td>
+              <td width="80%" colspan="2" id="confirm-answer-file">
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="detail-modal-footer">
+          <a class="btn btn-primary btn-100 mr-3" id="edit_btn">수정</a>
+          <a class="btn btn-primary btn-100" id="register_answer_btn">전송</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 답변 등록 모달 end -->
+
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script src="/admin/assets/js/common.js"></script>
+  <script src="/admin/assets/js/consultation_main.js"></script>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="/admin/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/admin/assets/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="/admin/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="/admin/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="/admin/assets/js/demo/datatables-demo.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+
+</body>
+
+</html>

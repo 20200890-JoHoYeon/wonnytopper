@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/*
+Disallow: /sitemap
+sitemap: https://web.wonnytopper.co.kr/sitemap.xml
+
+
+
+
