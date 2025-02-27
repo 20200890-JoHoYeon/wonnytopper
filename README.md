@@ -34,6 +34,6 @@ It's a web page that's actually being distributed, and the second additional dev
 ## Footer :exclamation:
 
 Click [here](https://web.wonnytopper.co.kr/) to visit my project.
-![이미지](https://github.com/20200890-JoHoYeon/wonnytopper/assets/70556072/a8e47230-a1af-480d-8d3c-a75a2dd4ab23)
+![이미지](https://github.com/user-attachments/assets/0536d00a-84b9-4bef-a9b9-def6044e6230)
 
 Finally, I will register a photo showing the progress of the project. Thank you for your review. 😘
