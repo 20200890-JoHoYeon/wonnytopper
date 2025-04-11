@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    hihimain
+    <%= user.name %>
+</body>
+<script>
+    $.ajax({
+  url: '/user/login',
+  data: {
+    "member_id": "admin",
+    "pwd" : "1234"
+},
+  type: 'POST',
+  success: function(response) {
+    //console.log(response);
+  },
+  error: function(xhr, status, error) {
+    console.error(error);
+  }
+});
+</script>
+</html>

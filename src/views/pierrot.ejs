@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('head') %>
+</head>
+
+<body>
+    <div class="wrap">
+        <%- include('header') %>
+            <div class="container">
+                <div class="qna_banner_area pierrot"></div>
+
+                <div class="category_gallery_content">
+                    <ul class="pierrot_category_list">
+                    </ul>
+                </div>
+            </div>
+
+            <!--상세 POPUP-->
+            <div class="popup_wrap hidden">
+                <div class="popup_container">
+                    <div class="popup_content">
+                        <div class="popup_header_content">
+                            <div class="popup_title">Title</div>
+                            <button class="icon_close close_btn"></button>
+                        </div>
+                        <div class="popup_body_content">
+                            <div class="swiper mySwiper popup_swiper_area">
+                                <div class="swiper-wrapper popup_images_list">
+
+                                </div>
+
+                                <!-- <div class="swiper-pagination"></div> -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- //상세 POPUP-->
+            <%- include('float') %>
+    </div>
+    <script src="/user/assets/js/swiper.js"></script>
+    <script src="/user/assets/js/common.js"></script>
+</body>
+
+</html>

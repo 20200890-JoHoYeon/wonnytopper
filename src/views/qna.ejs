@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <%- include('head') %>
+</head>
+
+<body>
+    <div class="wrap">
+        <%- include('header') %>
+            <div class="container">
+                <div class="qna_banner_area qna"></div>
+
+                <div class="qna_content">
+                    <div class="qna_process_img_area">
+                        <img src="/user/assets/images/process.png" alt="">
+                    </div>
+
+                    <div class="qna_input_area mo_mt_0">
+                        <div class="qna_left_txt">이름<span class="essential">*</span></div>
+                        <div class="qna_right_txt"><input type="text" class="name" maxlength="20"></div>
+                    </div>
+                    <div class="qna_input_area">
+                        <div class="qna_left_txt">휴대폰 번호<span class="essential">*</span></div>
+                        <div class="cal_input_area">
+                            <div class="qna_right_txt"><input type="text" class="phoneNum1" maxlength="3">
+                            </div>
+                            <div>-</div>
+                            <div class="qna_right_txt"><input type="text" class="phoneNum2" maxlength="4">
+                            </div>
+                            <div>-</div>
+                            <div class="qna_right_txt"><input type="text" class="phoneNum3" maxlength="4">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="qna_input_area">
+                        <div class="qna_left_txt">이메일<span class="essential">*</span></div>
+                        <div class="email_input_area">
+                            <div class="qna_right_txt"><input type="text" class="email"></div>
+                            <div>@</div>
+                            <div class="qna_right_txt"><input type="text" class="address"></div>
+                        </div>
+                    </div>
+                    <div class="qna_input_area">
+                        <div class="qna_left_txt">장소<span class="essential">*</span></div>
+                        <div class="qna_right_txt"><input type="text" class="place"></div>
+                    </div>
+                    <div class="qna_input_area">
+                        <div class="qna_left_txt">예산<span class="essential">*</span></div>
+                        <div class="budget_area">
+                            <div class="qna_right_txt"><input type="text" class="budget"></div>
+                            <div class="qna_cation_txt">만원</div>
+                        </div>
+                    </div>
+
+                    <div class="qna_input_area">
+                        <div class="qna_left_txt">의뢰목적<span class="essential">*</span></div>
+                        <div class="request_selet_area">
+                            <select name="" id="" class="select request_selet">
+                                <option value="" selected>선택</option>
+                                <option value="1">풍선장식</option>
+                                <option value="7">레터링 풍선</option>
+                                <option value="8">인쇄 풍선</option>
+                                <option value="2">메세지 토퍼</option>
+                                <option value="3">부스체험(토퍼, 풍선)</option>
+                                <option value="4">삐에로</option>
+                                <option value="5">페이스페인팅</option>
+                                <option value="6">클래스</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="qna_input_area">
+                        <div class="qna_left_txt">관련컨텐츠</div>
+                        <div class="contents_area">
+                            <div class="qna_right_txt contents_input_area">
+                                <input type="text" class="contents" disabled>
+                                <div class="select_content_area">
+                                    <input type="hidden" class="select_content_id">
+                                    <div class="select_content_title"></div>
+                                    <div class="content_del hidden"></div>
+                                </div>
+                            </div>
+                            <button class="contents_btn">컨텐츠 선택</button>
+                        </div>
+                    </div>
+
+                    <div class="qna_input_area align_flex_start">
+                        <div class="qna_left_txt">상담내용<span class="essential">*</span></div>
+                        <div class="textarea_area">
+                            <textarea name="" id="" placeholder="내용을 입력해주세요" class="qna_content_detail"
+                                maxlength="500"></textarea>
+                        </div>
+                    </div>
+                    <div class="agree_area">
+                        <div>
+                            <input type="checkbox" id="agree" name="agree" value="개인정보" />
+                            <label for="agree" class="flex_layout">
+                                <span class="checkbox"></span>
+                                <span class="agree_text">개인정보 수집 및 이용에 동의합니다.
+                                </span>
+                            </label>
+                        </div>
+                        <div class="agree_popup_text">상세보기</div>
+                    </div>
+                    <button class="apply_btn">신청하기</button>
+                </div>
+            </div>
+
+            <!--이용약관 POPUP-->
+            <div class="agree_popup_wrap hidden">
+                <div class="qna_popup_container">
+                    <div class="agree_popup_content">
+                        <div class="qna_popup_header_content">
+                            <div class="qna_popup_title">이용약관</div>
+                            <button class="qna_icon_close agree_close_btn"></button>
+                        </div>
+                        <div class="agree_popup_body_content">
+                            <div class="agree_popup_text_area">
+                                <b>&lt;워니토퍼&gt;</b>는 개인정보의 처리와 관련하여 관계 법령에 따라 개인정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고
+                                있습니다.<br><br>
+
+                                <b>1. 수집 개인정보 항목</b><br>
+                                이름, 휴대폰 번호, 이메일 주소, 장소<br><br>
+
+                                <b>2. 수집 · 이용 목적</b><br>
+                                상담을 위한 정보 제공<br><br>
+
+                                <b>3. 보유기간</b><br>
+                                문의 등록 1개월 후 지체 없이 파기<br><br>
+                                ※ 위와 같은 개인정보 수집 동의를 거부할 수 있습니다. 다만 동의를 거부할 경우, 상담문의가 불가능합니다.
+                            </div>
+                            <button class="agree_btn">동의하고 닫기</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- //이용약관 POPUP-->
+
+            <!--상세 POPUP-->
+            <div class="qna_popup_wrap hidden">
+                <div class="qna_popup_container">
+                    <div class="qna_popup_content">
+                        <div class="qna_popup_header_content">
+                            <div class="qna_popup_title">컨텐츠 선택</div>
+                            <button class="qna_icon_close close_btn"></button>
+                        </div>
+                        <div class="qna_popup_body_content">
+                            <div class="qna_input_area">
+                                <div class="qna_left_txt">카테고리</div>
+                                <div class="request_selet_area">
+                                    <select name="" id="" class="select category_request_selet">
+                                        <option value="1,2,3,4,5,6" selected>전체</option>
+                                        <option value="1">풍선장식</option>
+                                        <option value="5">레터링 풍선</option>
+                                        <option value="6">인쇄 풍선</option>
+                                        <option value="2">메세지 토퍼</option>
+                                        <option value="3">삐에로/페이스페인팅</option>
+                                        <option value="4">클래스</option>
+                                    </select>
+                                </div>
+                                <div class="qna_pad_area hidden">
+                                </div>
+                                <div class="sub request_selet_area hidden">
+                                    <select name="" id="" class="select sub_category_request_selet ">
+                                        <option value="" selected>전체</option>
+                                        <option value="1">입학식/졸업식</option>
+                                        <option value="2">풍선장식</option>
+                                        <option value="3">기업행사</option>\
+                                        <option value="4">입구풍선아치</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <ul class="conetnts_list">
+
+                            </ul>
+                            <button class="save_btn">저장하기</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- //상세 POPUP-->
+            <%- include('float') %>
+    </div>
+
+    <script src="/user/assets/js/swiper.js"></script>
+    <script src="/user/assets/js/common.js"></script>
+</body>
+
+</html>
